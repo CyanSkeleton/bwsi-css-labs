@@ -20,11 +20,14 @@ def max_subarray_sum(nums: list[int]) -> int:
         int: The maximum sum of any contiguous subarray.
     """
 
+    if(len(nums) == 0):
+        return None
+
     max_current = max_global = nums[0]
     
     for num in nums:
         max_current = max(num, max_current + num)
-        if max_current < max_global:
+        if max_current > max_global:
             max_global = max_current
             
     return max_global
@@ -34,6 +37,7 @@ def main():
     nums = [-2,1,-3,4,-1,2,1,-5,4]
     result = max_subarray_sum(nums)
     print(f"Maximum subarray sum: {result}")
+    print(max_subarray_sum([2,4,-3,18,17,24,-30,39]))
 
 if __name__ == "__main__":
     main()
